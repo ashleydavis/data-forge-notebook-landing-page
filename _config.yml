@@ -1,20 +1,24 @@
 # ----
 # Site
+#
+# Fix
+# https://github.com/jekyll/jekyll/issues/5935
+#
 
 title: Hydra Template
-url: "https://proud-alligator.cloudvent.net"
-baseurl:
+url: "https://ashleydavis.github.io/"
+baseurl: "data-forge-notebook-landing-page/"
 google_analytics_key:
 google_maps_javascript_api_key:
 disqus_shortname:
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
-description: Product marketing template for Jekyll.
+description: Data-Forge Notebook - Data analysis and visualization for JavaScript
 author:
-  name:
-  email:
-  twitter: # twitter username without the @ symbol
+  name: Ashley Davis
+  email: ashley@codecapers.com.au
+  twitter: ashleydavis75
 social:
   name: Hydra Template
   links:
