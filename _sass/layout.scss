@@ -170,6 +170,10 @@ blockquote:before {
 .zoomable-image {
 }
 
+.features .zoomable-image {
+    max-width: 400px;
+}
+
 .zoomable-image input[type=checkbox] {
     display: none;
 }
@@ -214,7 +218,7 @@ blockquote:before {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);    
     width: 85%;
-    background-color: rgba(1, 1, 1, 1);
+    background-color: white;
     padding: 8px;
 	border-radius: 2px;
 }
