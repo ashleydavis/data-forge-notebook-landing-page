@@ -55,19 +55,6 @@ header {
 	position: relative;
 }
 
-.screenshot {
-    background-color: white;
-	max-width: 85%;
-	height: auto;
-    display: block;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	border-radius: 2px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 15px;
-	position: relative;
-}
-
 .features {
     background-color: #F1F1F1;
 }
@@ -175,4 +162,59 @@ blockquote:before {
 		}
 	}
 
+}
+
+.screenshot {
+}
+
+.zoomable-image {
+}
+
+.zoomable-image input[type=checkbox] {
+    display: none;
+}
+
+.zoomable-image label {
+    background-color: white;
+    padding: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 2px;
+}
+
+.zoomable-image img {
+    cursor: zoom-in;
+}
+
+.full-image-container {
+    position: relative;
+    display: none;
+}
+
+.zoomable-image input[type=checkbox]:checked ~ label ~ .full-image-container {
+    display: block;
+}
+
+.full-image-container .full-image {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    cursor: zoom-out;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 10;
+}
+
+.full-image-container .full-image img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);    
+    width: 85%;
+    background-color: rgba(1, 1, 1, 1);
+    padding: 8px;
+	border-radius: 2px;
 }
