@@ -217,8 +217,11 @@ blockquote:before {
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);    
-    width: 85%;
+    max-width: 85%;
     background-color: white;
     padding: 8px;
-	border-radius: 2px;
+    border-radius: 2px;
+    max-height: 85%;
+    width: auto;
+    height: auto;
 }
