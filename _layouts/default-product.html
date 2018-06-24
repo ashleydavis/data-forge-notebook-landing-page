@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		{% seo %}
+		{% feed_meta %}
+
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
+        <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
+
+		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
+			<script>
+				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+				ga('create', '{{ site.google_analytics_key }}', 'auto');
+				ga('send', 'pageview');
+			</script>
+			<script async src='https://www.google-analytics.com/analytics.js'></script>
+        {% endif %}
+
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+        <style>
+    
+            /* Media query for mobile viewport */
+            @media screen and (max-width: 400px) {
+                #paypal-button-container {
+                    width: 100%;
+                }
+            }
+            
+            /* Media query for desktop viewport */
+            @media screen and (min-width: 400px) {
+                #paypal-button-container {
+                    width: 250px;
+                    display: inline-block;
+                }
+            }
+                
+        </style>        
+	</head>
+	<body>
+		<header>
+			<div class="container">
+                    <!--todo: Need logo 
+                <div class="company-name"><a href="{{ site.baseurl }}/">
+                    <img src="{{ site.baseurl }}/images/logo.svg" alt="Data-Forge Notebook Logo" width="95" height="33" />
+                </a></div>
+                    -->
+                    {% include navigation-product.html %}
+			</div>
+		</header>
+		{{ content }}
+		<footer>
+			<div class="container">
+				<p class="editor-link"><a href="cloudcannon:collections/_data/footer.yml" class="btn"><strong>&#9998;</strong> Edit footer</a></p>
+				<div class="footer-columns">
+					{% for column in site.data.footer %}
+					<ul class="footer-links">
+						{% for link in column.links %}
+							<li><a {% if link.new_window %}target="_blank"{% endif %} href="{% include relative-src.html src=link.link %}" {% if link.social_icon %}class="{{ link.social_icon }}-icon"{% endif %}>
+								{% if link.social_icon %}
+									{% include social-icon.html icon=link.social_icon %}
+								{% endif %}
+								{{ link.name }}</a></li>
+						{% endfor %}
+					</ul>
+					{% endfor %}
+				</div>
+				<p class="copyright">&copy; {{ site.time | date: '%Y' }} Code Capers • <a href="https://cloudcannon.com/">Template by CloudCannon</a></p>
+			</div>
+		</footer>
+		<script>
+			document.getElementById("open-nav").onclick = function () {
+				document.body.classList.toggle("nav-open");
+				return false;
+			};
+        </script>
+
+        <script>
+
+            // Render the PayPal button
+        
+            paypal.Button.render({
+        
+                // Set your environment
+        
+                env: 'sandbox', // sandbox | production
+        
+                // Specify the style of the button
+        
+                style: {
+                    label: 'buynow',
+                    fundingicons: true, // optional
+                    branding: true, // optional
+                    size:  'responsive', // small | medium | large | responsive
+                    shape: 'pill',   // pill | rect
+                    color: 'gold'   // gold | blue | silve | black
+                },
+        
+                // PayPal Client IDs - replace with your own
+                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+        
+                client: {
+                    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                    production: '<insert production client id>'
+                },
+        
+                // Wait for the PayPal button to be clicked
+        
+                payment: function(data, actions) {
+                    return actions.payment.create({
+                        transactions: [
+                            {
+                                amount: { total: '20.0', currency: 'USD' }
+                            }
+                        ]
+                    });
+                },
+        
+                // Wait for the payment to be authorized by the customer
+        
+                onAuthorize: function(data, actions) {
+                    return actions.payment.execute().then(function() {
+                        window.alert('Payment Complete!');
+                    });
+                }
+        
+            }, '#paypal-button-container');
+        
+        </script>
+	</body>
+</html>
