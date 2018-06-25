@@ -114,7 +114,18 @@
                     return actions.payment.create({
                         transactions: [
                             {
-                                amount: { total: '1.0', currency: 'USD' }
+                                amount: { total: '1.0', currency: 'USD' },
+                                item_list: {
+                                    items: [
+                                        {
+                                            name: 'Data-Forge Notebook',
+                                            description: 'Data analysis and visualization tool for JavaScript',
+                                            quantity: '1',
+                                            price: '1.00',
+                                            currency: 'USD'
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     });
