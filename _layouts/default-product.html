@@ -82,15 +82,14 @@
         <script>
 
             // Render the PayPal button
-        
-            paypal.Button.render({
-        
+            var btnConfig = {
+                
                 // Set your environment
-        
+
                 env: 'production', // sandbox | production
-        
+
                 // Specify the style of the button
-        
+
                 style: {
                     label: 'buynow',
                     fundingicons: true, // optional
@@ -99,17 +98,17 @@
                     shape: 'pill',   // pill | rect
                     color: 'gold'   // gold | blue | silve | black
                 },
-        
+
                 // PayPal Client IDs - replace with your own
                 // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-        
+
                 client: {
                     sandbox:    'ASESFTrDuDYJmCGhyBY1HZEWBBqOZz-ZtkldE1MfMlXN7DJqtWXzt-i-NKRuMSkssg6q9Md2gmmERPvT',
                     production: 'AYdzobk_LeFTiw58UKSIlrLnhI8Ix4Xi92BDekHPDt8wH9bqhtIJKSKkug9uEsCdeRZwIYaI6YT5l6Y6',
                 },
-        
+
                 // Wait for the PayPal button to be clicked
-        
+
                 payment: function(data, actions) {
                     return actions.payment.create({
                         payment: {
@@ -139,16 +138,19 @@
                         }
                     });
                 },
-        
+
                 // Wait for the payment to be authorized by the customer
-        
+
                 onAuthorize: function(data, actions) {
                     return actions.payment.execute().then(function() {
-                        window.alert('Payment Complete!');
+                        window.alert("Thanks for your purchase of Data-Forge Notebook, we'll be in touch soon!");
                     });
                 }
+
+            };
         
-            }, '#paypal-button-container');
+            paypal.Button.render(btnConfig, '#paypal-button-container-top');
+            paypal.Button.render(btnConfig, '#paypal-button-container-bottom');
         
         </script>
 	</body>
