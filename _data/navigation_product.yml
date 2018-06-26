@@ -10,10 +10,10 @@
   link: \#benefits
   new_window: false
   highlight: false
-- name: Features
-  link: \#features
-  new_window: false
-  highlight: false
+#- name: Features
+#  link: \#features
+#  new_window: false
+#  highlight: false
 #- name: Contact
 #  link: /contact/
 #  new_window: false
