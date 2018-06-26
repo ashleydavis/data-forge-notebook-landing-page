@@ -7,7 +7,7 @@
 #  new_window: false
 #  highlight: false
 - name: Benefits
-  link: \#benefits
+  link: /product/#benefits
   new_window: false
   highlight: false
 #- name: Features
