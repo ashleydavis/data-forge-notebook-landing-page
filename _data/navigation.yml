@@ -10,6 +10,10 @@
   link: \#features
   new_window: false
   highlight: false
+- name: Demo video
+  link: https://www.youtube.com/watch?v=ibIyveCtgrA
+  new_window: true
+  highlight: false
 #- name: Contact
 #  link: /contact/
 #  new_window: false
