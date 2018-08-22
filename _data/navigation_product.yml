@@ -10,6 +10,18 @@
   link: /product/#benefits
   new_window: false
   highlight: false
+- name: Demo video
+  link: https://www.youtube.com/watch?v=ibIyveCtgrA
+  new_window: true
+  highlight: false
+- name: More videos
+  link: https://www.youtube.com/channel/UCOxw0jy384_wFRwspgq7qMQ
+  new_window: true
+  highlight: false
+#todo: - name: Purchase
+#  id: paypal-button-container-nav
+#  highlight: true
+  
 #- name: Features
 #  link: \#features
 #  new_window: false
