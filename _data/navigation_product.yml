@@ -20,7 +20,7 @@
   highlight: false
 - name: Landing page
   link: /
-  new_window: false
+  new_window: true
   highlight: true
 #todo: - name: Purchase
 #  id: paypal-button-container-nav
