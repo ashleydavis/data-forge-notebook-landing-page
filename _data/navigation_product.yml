@@ -18,6 +18,10 @@
   link: https://www.youtube.com/channel/UCOxw0jy384_wFRwspgq7qMQ
   new_window: true
   highlight: false
+- name: Landing page
+  link: /
+  new_window: false
+  highlight: true
 #todo: - name: Purchase
 #  id: paypal-button-container-nav
 #  highlight: true
