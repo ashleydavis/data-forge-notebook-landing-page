@@ -60,3 +60,17 @@
 		flex-direction: row-reverse;
 	}
 }
+
+#examples {
+    background-color: $brand-color;
+
+    color: white;
+
+    p {
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+}

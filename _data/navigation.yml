@@ -6,8 +6,12 @@
 #  link: /blog/
 #  new_window: false
 #  highlight: false
+- name: Examples
+  link: /#examples
+  new_window: false
+  highlight: false
 - name: Features
-  link: \#features
+  link: /#features
   new_window: false
   highlight: false
 - name: Product video
