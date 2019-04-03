@@ -20,23 +20,11 @@
 			<script async src='https://www.google-analytics.com/analytics.js'></script>
         {% endif %}
 
-        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
         <style>
     
-            /* Media query for mobile viewport */
-            @media screen and (max-width: 400px) {
-                #paypal-button-container {
-                    width: 100%;
-                }
-            }
-            
-            /* Media query for desktop viewport */
-            @media screen and (min-width: 400px) {
-                #paypal-button-container {
-                    width: 250px;
-                    display: inline-block;
-                }
+            #paypal-button-container {
+                width: 150px;
+                display: inline-block;
             }
                 
         </style>        
@@ -76,81 +64,6 @@
 				document.body.classList.toggle("nav-open");
 				return false;
 			};
-        </script>
-
-        <script>
-
-            // Render the PayPal button
-            var btnConfig = {
-                
-                // Set your environment
-
-                env: 'production', // sandbox | production
-
-                // Specify the style of the button
-
-                style: {
-                    label: 'buynow',
-                    fundingicons: true, // optional
-                    branding: true, // optional
-                    size:  'responsive', // small | medium | large | responsive
-                    shape: 'pill',   // pill | rect
-                    color: 'gold'   // gold | blue | silve | black
-                },
-
-                // PayPal Client IDs - replace with your own
-                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-
-                client: {
-                    sandbox:    'ASESFTrDuDYJmCGhyBY1HZEWBBqOZz-ZtkldE1MfMlXN7DJqtWXzt-i-NKRuMSkssg6q9Md2gmmERPvT',
-                    production: 'AYdzobk_LeFTiw58UKSIlrLnhI8Ix4Xi92BDekHPDt8wH9bqhtIJKSKkug9uEsCdeRZwIYaI6YT5l6Y6',
-                },
-
-                // Wait for the PayPal button to be clicked
-
-                payment: function(data, actions) {
-                    return actions.payment.create({
-                        payment: {
-                            transactions: [
-                                {
-                                    amount: { total: '30.0', currency: 'USD' },
-                                    item_list: {
-                                        items: [
-                                            {
-                                                name: 'Data-Forge Notebook',
-                                                description: 'Data analysis and visualization tool for JavaScript',
-                                                quantity: '1',
-                                                price: '30.00',
-                                                currency: 'USD'
-                                            }
-                                        ]
-                                    }
-                                }
-                            ]
-                        },
-                        experience:
-                        {
-                            input_fields:
-                            {
-                                no_shipping: 1
-                            }
-                        }
-                    });
-                },
-
-                // Wait for the payment to be authorized by the customer
-
-                onAuthorize: function(data, actions) {
-                    return actions.payment.execute().then(function() {
-                        window.alert("Thanks for your purchase of Data-Forge Notebook, we'll be in touch soon!");
-                    });
-                }
-
-            };
-        
-            paypal.Button.render(btnConfig, '#paypal-button-container-top');
-            paypal.Button.render(btnConfig, '#paypal-button-container-bottom');
-        
         </script>
 	</body>
 </html>
