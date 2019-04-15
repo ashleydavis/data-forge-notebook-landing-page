@@ -13,7 +13,7 @@ permalink: /product
         -->
         <p class="subtext">Purchase Data-Forge Notebook now and join the early access program</p>
         
-        <p class="subtext">Only $35 USD, that's a <b>30% discount</b> for being an early adopter</p>
+        <p class="subtext">Only $<span id="payment-amount">35</span> USD, that's a <b><span id="discount-amount">30</span>% discount</b> for being an early adopter</p>
 
         <div>
             <div>
@@ -241,6 +241,24 @@ permalink: /product
                                 height: 100%;
                             }
 
+                            .discount-code-container {
+                                margin-top: 2em;
+                                width: 100%;
+                            }
+
+                            .discount-code-container input {
+                                width: 90%;
+                                height: 1.5em;
+                                font-size: 1.2em;
+                                padding: 12px 10px;
+                                margin: 8px 0;
+                                box-sizing: border-box;
+                                border-radius: 3px;
+                                border: 2px solid #ccc;
+                                background-color: #f8f8f8;
+                                text-align: center;
+                            }
+
                         </style>
 
                         <div style="margin: auto; width: 320px;">
@@ -248,6 +266,43 @@ permalink: /product
                                 function error() {
                                     console.error("Expected query parameter email to be attached to the URL: " + window.location.href);
                                     alert("Please make sure you have clicked through a valid link to get to the Data-Forge Notebook purchase page.\r\n\r\nIf you continue to have problems please email ashley@codecapers.com.au for support.");
+                                }
+
+                                var discountCode;
+
+                                const baseApiUrl = "http://api.data-forge-notebook.com";
+                                //const baseApiUrl = "http://localhost:3000";
+
+                                function resetPaymentAmount() {
+                                    document.getElementById("payment-amount").textContent = "35";
+                                    document.getElementById("discount-amount").textContent = "40";
+                                }
+
+                                function onDiscountCodeChange() {
+                                    discountCode = document.getElementById("discount-code-input").value;
+                                    if (!discountCode) {
+                                        resetPaymentAmount();
+                                        return;
+                                    }
+                                    
+                                    var r = new XMLHttpRequest();
+                                    r.open("GET", baseApiUrl + "/discount-code?code=" + discountCode, true);
+                                    r.onreadystatechange = function () {
+                                        if (r.readyState != 4 || r.status != 200) {
+                                            resetPaymentAmount();
+                                            return;
+                                        }
+
+                                        const response = JSON.parse(r.responseText);
+                                        if (response.ok) {
+                                            document.getElementById("payment-amount").textContent = response.payment.toString();
+                                            document.getElementById("discount-amount").textContent = response.discount.toString();
+                                        }
+                                        else {
+                                            resetPaymentAmount();
+                                        }
+                                    };
+                                    r.send();
                                 }
 
                                 function onClickPurchase() {
@@ -280,8 +335,10 @@ permalink: /product
                                         return;
                                     }
 
-                                    const purchaseUrl = "http://api.data-forge-notebook.com/purchase?email=" + email;
-                                    //const purchaseUrl = "http://localhost:3000/purchase?email=" + email;
+                                    var purchaseUrl = baseApiUrl + "/purchase?email=" + email;
+                                    if (discountCode) {
+                                        purchaseUrl += "&discount=" + discountCode;
+                                    }
                                     window.open(purchaseUrl, "_self");
                                 }
                             </script>
@@ -313,6 +370,15 @@ permalink: /product
                                         >
                                 </div>
                             </a>
+
+                            <div class="discount-code-container">
+                                <div>Discount code</div>
+                                <input 
+                                    id="discount-code-input"
+                                    onkeyup="onDiscountCodeChange()"
+                                    placeholder="Enter your discount code here"
+                                    >
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -459,7 +525,7 @@ permalink: /product
             <!--
             <h2 class="editable">Exploratory coding, data analysis and visualization in JavaScript</h2>
             -->
-            <p style="color: white;">Become a Data-Forge Notebook early adoptor now for only $35 USD, that's a 30% discount</p>
+            <p style="color: white;">Become a Data-Forge Notebook early adoptor now for a significant discount!</p>
                
             <p style="color: white;">Want to donate, support or sponsor Data-Forge Notebook?</p>
             <p style="color: white;">Have problems or questions?</p>
