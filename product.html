@@ -335,7 +335,7 @@ permalink: /product
                                         return;
                                     }
 
-                                    var purchaseUrl = baseApiUrl + "/purchase?email=" + email;
+                                    var purchaseUrl = baseApiUrl + "/purchase?email=" + encodeURIComponent(email);
                                     if (discountCode) {
                                         purchaseUrl += "&discount=" + discountCode;
                                     }
