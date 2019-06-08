@@ -10,6 +10,10 @@
   link: /#examples
   new_window: false
   highlight: false
+- name: Testimonials
+  link: /#testimonials
+  new_window: false
+  highlight: false
 - name: Features
   link: /#features
   new_window: false
@@ -30,7 +34,7 @@
 #  link: https://www.codecapers.com.au
 #  new_window: true
 #  highlight: false
-- name: Sign Up
+- name: Get it!
   link: http://eepurl.com/dyb9dn
   new_window: true
   highlight: true
