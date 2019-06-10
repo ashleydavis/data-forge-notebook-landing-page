@@ -275,8 +275,7 @@ permalink: /product
                                 //const baseApiUrl = "http://localhost:3000";
 
                                 function resetPaymentAmount() {
-                                    document.getElementById("payment-amount").textContent = "50";
-                                    document.getElementById("discount-amount").textContent = "";
+                                    document.getElementById("discount-text").textContent = "";
                                 }
 
                                 function onDiscountCodeChange() {
@@ -290,17 +289,16 @@ permalink: /product
                                     r.open("GET", baseApiUrl + "/discount-code?code=" + discountCode, true);
                                     r.onreadystatechange = function () {
                                         if (r.readyState != 4 || r.status != 200) {
-                                            resetPaymentAmount();
+                                            document.getElementById("discount-text").textContent = "Error contacting server, please let us know at support@data-forge-notebook.com.";
                                             return;
                                         }
 
                                         const response = JSON.parse(r.responseText);
                                         if (response.ok) {
-                                            document.getElementById("payment-amount").textContent = response.payment.toString();
-                                            document.getElementById("discount-amount").textContent = response.discount.toString();
+                                            document.getElementById("discount-text").textContent = "You have a discount of " + response.discount.toString() + "% which means you'll pay $" + response.payment.toString() + " USD.";
                                         }
                                         else {
-                                            resetPaymentAmount();
+                                            document.getElementById("discount-text").textContent = "Your discount code isn't valid.";
                                         }
                                     };
                                     r.send();
@@ -381,6 +379,8 @@ permalink: /product
                                     placeholder="Enter your discount code here"
                                     >
                             </div>
+
+                            <p class="subtext" id="discount-text"></p>
                         </div>
                     </div>
                 </div>
