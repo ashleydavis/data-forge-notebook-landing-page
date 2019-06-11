@@ -14,8 +14,8 @@
   link: /#testimonials
   new_window: false
   highlight: false
-- name: Features
-  link: /#features
+- name: About
+  link: /#about
   new_window: false
   highlight: false
 - name: Product video
