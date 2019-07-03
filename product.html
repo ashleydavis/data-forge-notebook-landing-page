@@ -350,11 +350,13 @@ permalink: /product
                                         currency: 'USD',
                                     });
 
-                                    var purchaseUrl = baseApiUrl + "/purchase?email=" + encodeURIComponent(email);
-                                    if (discountCode) {
-                                        purchaseUrl += "&discount=" + discountCode;
-                                    }
-                                    window.open(purchaseUrl, "_self");
+                                    setTimeout(function () {
+                                        var purchaseUrl = baseApiUrl + "/purchase?email=" + encodeURIComponent(email);
+                                        if (discountCode) {
+                                            purchaseUrl += "&discount=" + discountCode;
+                                        }
+                                        window.open(purchaseUrl, "_self");
+                                    }, 1500);
                                 }
                             </script>
 
