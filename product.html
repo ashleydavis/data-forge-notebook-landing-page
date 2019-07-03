@@ -3,7 +3,11 @@ layout: default
 permalink: /product
 ---
 <section class="hero">
-	<div class="text-container">
+        <script>
+            fbq('track', 'ViewContent');
+        </script>
+
+    	<div class="text-container">
         <div class="logo">
             <img src="/images/logo.png" alt="logo">
         </div>
@@ -340,6 +344,11 @@ permalink: /product
                                         error();
                                         return;
                                     }
+
+                                    fbq('track', 'InitiateCheckout', {
+                                        value: 50,
+                                        currency: 'USD',
+                                    });
 
                                     var purchaseUrl = baseApiUrl + "/purchase?email=" + encodeURIComponent(email);
                                     if (discountCode) {
