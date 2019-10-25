@@ -287,19 +287,19 @@ permalink: /product
                                     }
                                 }
 
-                                var discountCode = query["discount"] || "";
+                                var discountCode = query["discount"];
                                 if (discountCode) {
-                                    var discountCode = document.getElementById("discount-code-input");
-                                    if (discountCode) {
-                                        discountCode.value = discountCode;
+                                    var discountInput = document.getElementById("discount-code-input");
+                                    if (discountInput) {
+                                        discountInput.value = discountCode;
                                     }
                                     else {
                                         document.addEventListener("DOMContentLoaded", function () {
-                                            discountCode = document.getElementById("discount-code-input");
-                                            if (discountCode) {
-                                                discountCode.value = discountCode;
+                                            discountInput = document.getElementById("discount-code-input");
+                                            if (discountInput) {
+                                                discountInput.value = discountCode;
                                             }
-                                        });                                        
+                                        });
                                     }
                                 }
 
