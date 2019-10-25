@@ -287,7 +287,22 @@ permalink: /product
                                     }
                                 }
 
-                                var discountCode;
+                                var discountCode = query["discount"] || "";
+                                if (discountCode) {
+                                    const discountElement = document.getElementById("discount-text");
+                                    if (discountElement) {
+                                        discountElement.textContent = discountCode;
+                                    }
+                                    else {
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            const discountElement = document.getElementById("discount-text");
+                                            if (discountElement) {
+                                                discountElement.textContent = discountCode;
+                                            }
+                                        });                                        
+                                    }
+                                }
+
                                 var email = query["email"] || "";
                                 if (email) {
                                     const emailInput = document.getElementById("email-input");
