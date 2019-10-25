@@ -289,15 +289,15 @@ permalink: /product
 
                                 var discountCode = query["discount"] || "";
                                 if (discountCode) {
-                                    const discountElement = document.getElementById("discount-text");
-                                    if (discountElement) {
-                                        discountElement.textContent = discountCode;
+                                    var discountCode = document.getElementById("discount-code-input");
+                                    if (discountCode) {
+                                        discountCode.value = discountCode;
                                     }
                                     else {
                                         document.addEventListener("DOMContentLoaded", function () {
-                                            const discountElement = document.getElementById("discount-text");
-                                            if (discountElement) {
-                                                discountElement.textContent = discountCode;
+                                            discountCode = document.getElementById("discount-code-input");
+                                            if (discountCode) {
+                                                discountCode.value = discountCode;
                                             }
                                         });                                        
                                     }
@@ -305,13 +305,13 @@ permalink: /product
 
                                 var email = query["email"] || "";
                                 if (email) {
-                                    const emailInput = document.getElementById("email-input");
+                                    var emailInput = document.getElementById("email-input");
                                     if (emailInput) {
                                         emailInput.value = email;
                                     }
                                     else {
                                         document.addEventListener("DOMContentLoaded", function () {
-                                            const emailInput = document.getElementById("email-input");
+                                            var emailInput = document.getElementById("email-input");
                                             if (emailInput) {
                                                 emailInput.value = email;
                                             }
