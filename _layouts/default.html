@@ -8,7 +8,8 @@
 		{% seo %}
 		{% feed_meta %}
 
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/tailwind.css">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
 
 		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
@@ -42,8 +43,19 @@
         
 	</head>
 	<body>
+       <div class="flex flex-col items-center justify-center w-full bg-black text-white text-sm text-center p-4">
+            <div class="text-lg"> 
+                THESE ARE DIFFICULT TIMES
+            </div>
+            <div class="mt-1"> 
+                Data-Forge Notebook is now discounted <span class="text-xl">60%</span> for a limited time.
+            </div>
+            <div> 
+                Use discount code <b class="text-xl">ds20321</b> now and get DFN for only $20 USD!
+            </div>
+        </div>
 		<header>
-			<div class="container">
+            <div class="container">
                 <div class="company-name"><a href="{{ site.baseurl }}/">
                     <img src="{{ site.baseurl }}/images/logo.png" alt="Data-Forge Notebook Logo" width="95" height="33" />
                 </a></div>
