@@ -8,3 +8,45 @@
 @import "layout";
 @import "navigation";
 @import "footer";
+
+@keyframes keyframes {
+    0% {
+        transform: rotate(-1deg);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: rotate(1deg);
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        transform: rotate(-1deg);
+        animation-timing-function: ease-out;
+    }
+}
+
+#signup {
+    position: fixed; 
+    bottom: -100px; 
+    left: 50%; 
+    z-index: 1000; 
+    width: 400px; 
+    margin-left: -200px; 
+    transition: bottom 0.2s ease-out;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+#signup label {
+    cursor: pointer;
+}
+
+#signup.show {
+    bottom: 10px;
+    transition: bottom 0.3s ease-in;
+}
+
+#signup.pulse {
+    animation: keyframes 0.3s;
+}
