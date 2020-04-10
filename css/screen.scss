@@ -11,34 +11,30 @@
 
 @keyframes keyframes {
     0% {
-        transform: rotate(-1deg);
-        animation-timing-function: ease-out;
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(2deg);
     }
 
     50% {
-        transform: rotate(1deg);
-        animation-timing-function: ease-in;
+        transform: rotate(-2deg);
     }
 
     100% {
-        transform: rotate(-1deg);
-        animation-timing-function: ease-out;
+        transform: rotate(0);
     }
 }
 
 #signup {
     position: fixed; 
     bottom: -140px; 
-    left: 50%; 
+    left: 20px;
     z-index: 1000; 
+    width: 300px;
     transition: bottom 0.2s ease-out;
     cursor: pointer;
-}
-
-#signup-inner {
-    position: relative;
-    left: -50%;
-    width: 300px; 
 }
 
 #signup label {
@@ -51,5 +47,5 @@
 }
 
 #signup.pulse {
-    animation: keyframes 0.4s;
+    animation: keyframes 0.3s ease-in-out;
 }
