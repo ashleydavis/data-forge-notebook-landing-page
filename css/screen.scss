@@ -31,10 +31,14 @@
     bottom: -140px; 
     left: 50%; 
     z-index: 1000; 
-    width: 300px; 
-    margin-left: -150px; 
     transition: bottom 0.2s ease-out;
     cursor: pointer;
+}
+
+#signup-inner {
+    position: relative;
+    left: -50%;
+    width: 300px; 
 }
 
 #signup label {
