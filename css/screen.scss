@@ -28,14 +28,13 @@
 
 #signup {
     position: fixed; 
-    bottom: -100px; 
+    bottom: -140px; 
     left: 50%; 
     z-index: 1000; 
-    width: 400px; 
-    margin-left: -200px; 
+    width: 300px; 
+    margin-left: -150px; 
     transition: bottom 0.2s ease-out;
     cursor: pointer;
-    border: 1px solid black;
 }
 
 #signup label {
@@ -48,5 +47,5 @@
 }
 
 #signup.pulse {
-    animation: keyframes 0.3s;
+    animation: keyframes 0.4s;
 }
