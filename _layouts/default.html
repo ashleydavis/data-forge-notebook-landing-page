@@ -129,24 +129,22 @@
                 }
             };
 
-            setTimeout(() => {
-                signup.classList.add("pulse");
+            var numPulses = 4;
+
+            function pulse() {
                 setTimeout(() => {
-                    signup.classList.remove("pulse");
+                    signup.classList.add("pulse");
                     setTimeout(() => {
-                        signup.classList.add("pulse");
-                        setTimeout(() => {
-                            signup.classList.remove("pulse");
-                            setTimeout(() => {
-                                signup.classList.add("pulse");
-                                setTimeout(() => {
-                                    signup.classList.remove("pulse");
-                                }, 500);
-                            }, 5000);
-                        }, 500);
-                    }, 5000);
-                }, 500);
-            }, 5000);
+                        signup.classList.remove("pulse");
+                        numPulses -= 1;
+                        if (numPulses > 0) {
+                            pulse();
+                        }
+                    }, 500);
+                }, 5000);
+            }
+
+            pulse();
 
             setTimeout(() => {
                 signup.classList.add("show");
