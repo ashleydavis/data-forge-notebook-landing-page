@@ -18,6 +18,10 @@
   link: /#about
   new_window: false
   highlight: false
+- name: The developer
+  link: #about-the-developer
+  new_window: false
+  highlight: false
 - name: Product video
   link: https://www.youtube.com/watch?v=nRRl-97qVQw
   new_window: true
