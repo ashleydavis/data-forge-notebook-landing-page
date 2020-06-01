@@ -418,7 +418,7 @@
             <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required style="width: 90%;" onclick="stopPropagation(event)">
             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f0220333a13f2b0e980819dbe_c526152b6e" tabindex="-1" value=""></div>
-            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" onclick="stopPropagation(event)"></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" onclick="onSubscribe(event)"></div>
             </div>
         </form>
         </div>
@@ -426,8 +426,26 @@
     </div>
 
     <script>
+        mixpanel.track("Web-View-Landing");
+
         function stopPropagation(event) {
             event.stopPropagation();
+        }
+
+        function onSubscribe(event) {
+            stopPropagation(event);
+
+            var email = document.getElementById("mce-EMAIL").value;
+            if (email) {
+                email = email.trim();
+            }
+            if (email) {
+                mixpanel.alias(email);
+                mixpanel.people.set({
+                    $email: email,
+                });
+                mixpanel.track("Web-Subscribed", { email });
+            }
         }
 
         const signup = document.getElementById("signup");

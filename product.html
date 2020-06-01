@@ -264,8 +264,9 @@ permalink: /product
 
                         <div style="margin: auto; width: 320px;">
                             <script>
+                                mixpanel.track("Web-View-Product");
                                 var baseApiUrl = "https://api.data-forge-notebook.com";
-                                //var baseApiUrl = "http://localhost:3000";
+                                // var baseApiUrl = "http://localhost:80";
 
                                 function error() {
                                     alert("Please enter your email.\r\nWe need your email to be able to send you download links for Data-Forge Notebook. Your email won't be shared with anyone else.\r\n\r\nIf you have questions or a problem please email support@data-forge-notebook.com.");
@@ -299,8 +300,18 @@ permalink: /product
                                     }
                                 }
 
+                                var aliasId = query["did"];
+                                if (aliasId) {
+                                    mixpanel.identify(aliasId);
+                                }
+
                                 var email = query["email"] || "";
                                 if (email) {
+                                    mixpanel.alias(email);
+                                    mixpanel.people.set({
+                                        $email: email,
+                                    });
+
                                     var emailInput = document.getElementById("email-input");
                                     if (emailInput) {
                                         emailInput.value = email;
@@ -311,7 +322,7 @@ permalink: /product
                                             if (emailInput) {
                                                 emailInput.value = email;
                                             }
-                                        });                                        
+                                        });
                                     }
                                 }
 
@@ -345,16 +356,22 @@ permalink: /product
                                     r.send();
                                 }
                                 
-                                function onEmailChange() {
-                                    email = document.getElementById("email-input").value;
-                                }
-
                                 function onClickPurchase() {
+
+                                    email = document.getElementById("email-input").value;
+                                    if (email) {
+                                        email = email.trim();
+                                    }
                                    
-                                    if (!email || email.trim() === "") {
+                                    if (!email || email === "") {
                                         error();
                                         return;
                                     }
+
+                                    mixpanel.alias(email);
+                                    mixpanel.people.set({
+                                        $email: email,
+                                    });
 
                                     fbq('track', 'InitiateCheckout', {
                                         value: 50,
@@ -362,10 +379,12 @@ permalink: /product
                                     });
 
                                     setTimeout(function () {
+                                        mixpanel.track("Web-Payment-Started");
                                         var purchaseUrl = baseApiUrl + "/purchase?email=" + encodeURIComponent(email);
                                         if (discountCode) {
                                             purchaseUrl += "&discount=" + discountCode;
                                         }
+                                        purchaseUrl += "&did=" + mixpanel.get_distinct_id();
                                         window.open(purchaseUrl, "_self");
                                     }, 300);
                                 }
@@ -375,7 +394,6 @@ permalink: /product
                                 <h3>Your email</h3>
                                 <input 
                                     id="email-input"
-                                    onkeyup="onEmailChange()"
                                     placeholder="Enter your email here"
                                     >
                                 <p style="font-size: 0.85em;">
