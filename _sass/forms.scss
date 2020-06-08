@@ -22,8 +22,13 @@
 }
 
 .button.alt a:hover {
-	background: #fff;
-	color: $brand-color;
+	background: rgba(255,255,255,0.225);
+	color: white;
+}
+
+.button.alt.cta a {
+    font-size: 1.3em;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
 }
 
 textarea, input, button, select { font-family: inherit; font-size: inherit; }
