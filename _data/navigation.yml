@@ -38,7 +38,10 @@
 #  link: https://www.codecapers.com.au
 #  new_window: true
 #  highlight: false
-- name: Get it!
+# - name: Get DFN Free
+#   link: /product
+#   new_window: true
+- name: Buy DFN Pro!
   link: /product
   new_window: true
   highlight: true
