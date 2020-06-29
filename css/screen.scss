@@ -16,11 +16,11 @@
     }
 
     25% {
-        transform: rotate(2deg);
+        transform: rotate(3deg);
     }
 
     50% {
-        transform: rotate(-2deg);
+        transform: rotate(-3deg);
     }
 
     100% {
@@ -30,9 +30,9 @@
 
 #signup {
     position: fixed; 
-    bottom: -180px; 
+    bottom: -138px; 
     left: 20px;
-    z-index:    000; 
+    z-index: 1000; 
     width: 300px;
     transition: bottom 0.2s ease-out;
     cursor: pointer;
@@ -51,7 +51,3 @@
     animation: keyframes 0.3s ease-in-out;
 }
 
-#mc_embed_signup {
-    font-family: 'Noto Sans', sans-serif !important;
-    font-family: 'Raleway', sans-serif !important;
-}
