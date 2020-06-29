@@ -19,7 +19,7 @@
   new_window: false
   highlight: false
 - name: The developer
-  link: #about-the-developer
+  link: /#about-the-developer
   new_window: false
   highlight: false
 - name: Product video
