@@ -400,7 +400,7 @@ permalink: /product
                                 </p>
                             </div>
 
-                            <div class="mt-8">
+                            <div class="mt-16">
                                 <a style="cursor: pointer;" onclick="onClickPurchase()" >
                                     <div 
                                         class="paypal-button paypal-button-number-0 paypal-button-layout-horizontal paypal-button-shape-pill paypal-button-branding-branded paypal-button-number-single paypal-button-env-production paypal-should-focus paypal-button-label-buynow paypal-button-color-gold paypal-button-logo-color-blue" 
@@ -430,7 +430,74 @@ permalink: /product
                                 </a>
                             </div>
 
-                            <div class="mt-8 discount-code-container">
+                            <div class="mt-8">
+                                <button 
+                                    id="checkout-button"
+                                    style="font-size: 1.2em; width: 320px; height: 55px; border-radius: 28px; border-width: 2px;  border-color: white; color: white; cursor: pointer; background-color: #6100FF;"
+                                    >
+                                    Buy now with credit card
+                                </button>
+                            </div>
+
+                            <script>
+                                // SANDBOX
+                                // var stripe = Stripe('pk_test_51H6qptBwAGsxbJSlNebVfem6QNcRHX11OcXtE1XyT9qAXpVP6Nts6FLBfcP0hBoMNaMjAdGCW5Wqvf2lR6z1Dlj800aWQMCCY9');
+
+                                // LIVE
+                                var stripe = Stripe('pk_live_51H6qptBwAGsxbJSl95hGruA0EB6jj8TZmtgC6t032a2Qz30u558C7SdNWAms04XH5Wf10IA4fVLxSHn1eNL6e27m00r5GvUI5d');
+
+                                var checkoutButton = document.getElementById('checkout-button');
+
+                                checkoutButton.addEventListener('click', function () {
+
+                                    email = document.getElementById("email-input").value;
+                                    if (email) {
+                                        email = email.trim();
+                                    }
+                                   
+                                    if (!email || email === "") {
+                                        error();
+                                        return;
+                                    }
+
+                                    var purchaseUrl = baseApiUrl + "/purchase-stripe?email=" + encodeURIComponent(email);
+                                    if (discountCode) {
+                                        purchaseUrl += "&discount=" + discountCode;
+                                    }
+                                    purchaseUrl += "&did=" + mixpanel.get_distinct_id();
+
+                                    var r = new XMLHttpRequest();
+                                    r.open("GET", purchaseUrl, true);
+                                    r.onreadystatechange = function () {
+                                        if (r.readyState !== XMLHttpRequest.DONE) {
+                                            return;
+                                        }
+                                        
+                                        if (r.status != 200) {
+                                            alert("Checkout failed, problem in the backend. Please let us know at support@data-forge-notebook.com");
+                                            return;
+                                        }
+
+                                        var response = JSON.parse(r.responseText);
+                                        if (response.session) {
+                                            stripe.redirectToCheckout({
+                                                sessionId: response.session,
+                                                })
+                                                .then(function (result) {
+                                                    alert("Checkout failed, details: \n" + result.error.message);
+                                                });
+                                        }
+                                        else {
+                                            alert("Checkout failed, problem in the backend. Please let us know at support@data-forge-notebook.com");
+                                        }
+                                    };
+                                    r.send();
+                                });
+
+
+                            </script>
+
+                            <div class="mt-16 discount-code-container">
                                 <h3>Discount code</h3>
                                 <p class="mt-0 mb-1" style="font-size: 0.85em;">
                                     If you have a discount code please enter it here
@@ -468,6 +535,6 @@ permalink: /product
             <p>Looking for a student discount or volume licencing?</p>
             <p>Email on <a href="mailto:support@data-forge-notebook.com" target="_blank">support@data-forge-notebook.com</a></p>
             <p>Follow on Twitter at <a href="https://twitter.com/ashleydavis75" target="_blank">@ashleydavis75</a>.</p>
-    </div>
+        </div>
 	</div>
 </section>
