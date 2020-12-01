@@ -41,6 +41,10 @@
 # - name: Get DFN Free
 #   link: /product
 #   new_window: true
+- name: Give support!
+  link: https://github.com/data-forge-notebook/wiki/wiki/give-support
+  new_window: true
+  highlight: false
 - name: Buy DFN Pro!
   link: /product
   new_window: true
